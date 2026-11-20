@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090817">
+  <title>CreateAI Pro — Imagine • Create • Generate</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">✦</span><span>CreateAI <b>Pro</b><small>IMAGINE • CREATE • GENERATE</small></span></a>
+  <nav><a href="#tools">AI Tools</a><a href="#plans">Plans</a><a href="#about">About</a></nav>
+  <a class="login" href="#tools">Get Started</a>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">✧ YOUR CREATIVE AI WORKSPACE</div>
+    <h1>कल्पनांना द्या<br><span>AI ची ताकद.</span></h1>
+    <p>फोटो, व्हिडिओ आणि आकर्षक कार्टून तयार करण्यासाठी तुमचे क्रिएटिव्ह स्टुडिओ.</p>
+    <div class="hero-actions"><a class="primary" href="#tools">Create Now <span>↗</span></a><a class="secondary" href="#plans">View Plans</a></div>
+    <div class="hero-note">✦ साधे • स्मार्ट • क्रिएटिव्ह</div>
+    <div class="orb orb-one"></div><div class="orb orb-two"></div>
+  </section>
+
+  <section id="tools" class="section">
+    <div class="section-head"><div><div class="eyebrow">CREATE SOMETHING AMAZING</div><h2>तुमचे AI Tools</h2></div><span class="tag">DEMO PREVIEW</span></div>
+    <div class="tool-grid">
+      <article class="tool-card"><div class="tool-icon purple">▧</div><h3>AI Image Generator</h3><p>Text prompt वापरून नवीन इमेज तयार करा.</p><label for="imagePrompt">तुमचा इमेज प्रॉम्प्ट</label><textarea id="imagePrompt" placeholder="उदा. सुंदर पर्वतांमध्ये futurist शहर..."></textarea><button onclick="demo('imagePrompt','imageResult')">Generate Image</button><div id="imageResult" class="result">इथे तुमचा डेमो स्टेटस दिसेल.</div></article>
+      <article class="tool-card"><div class="tool-icon blue">▶</div><h3>AI Video Generator</h3><p>तुमच्या कल्पनेवर आधारित व्हिडिओ तयार करण्यासाठी.</p><label for="videoPrompt">व्हिडिओ प्रॉम्प्ट</label><textarea id="videoPrompt" placeholder="उदा. समुद्रकिनारी सूर्यास्ताचा सिनेमॅटिक सीन..."></textarea><button onclick="demo('videoPrompt','videoResult')">Generate Video</button><div id="videoResult" class="result">इथे तुमचा डेमो स्टेटस दिसेल.</div></article>
+      <article class="tool-card"><div class="tool-icon pink">◈</div><h3>3D Cartoon Maker</h3><p>मजेदार कार्टून कॅरेक्टरसाठी प्रॉम्प्ट तयार करा.</p><label for="cartoonPrompt">कार्टूनची कल्पना</label><textarea id="cartoonPrompt" placeholder="उदा. हसरा 3D रोबोट, रंगीत स्टुडिओ..."></textarea><button onclick="demo('cartoonPrompt','cartoonResult')">Create Cartoon</button><div id="cartoonResult" class="result">इथे तुमचा डेमो स्टेटस दिसेल.</div></article>
+    </div>
+    <p class="notice">टीप: सध्या ही वेबसाइटची फ्रंटएंड डेमो आवृत्ती आहे. प्रत्यक्ष AI फोटो/व्हिडिओ जनरेशन सुरू करण्यासाठी सुरक्षित backend आणि AI provider API जोडणे आवश्यक आहे.</p>
+  </section>
+
+  <section id="plans" class="section plans-section">
+    <div class="section-head"><div><div class="eyebrow">SIMPLE SUBSCRIPTIONS</div><h2>तुमचा प्लॅन निवडा</h2></div></div>
+    <div class="plan-grid">
+      <article class="plan"><h3>Basic</h3><div class="price">₹99 <small>/ 1 महिना</small></div><p>सुरुवात करण्यासाठी</p><ul><li>AI Studio access (पुढील इंटिग्रेशननंतर)</li><li>Basic credits</li><li>Standard support</li></ul><a href="#contact" class="plan-btn">Select Basic</a></article>
+      <article class="plan featured"><div class="popular">POPULAR</div><h3>Standard</h3><div class="price">₹299 <small>/ 5 महिने</small></div><p>नियमित क्रिएटर्ससाठी</p><ul><li>AI Studio access (पुढील इंटिग्रेशननंतर)</li><li>More credits</li><li>Priority support</li></ul><a href="#contact" class="plan-btn">Select Standard</a></article>
+      <article class="plan"><h3>Premium</h3><div class="price">₹599 <small>/ 1 वर्ष</small></div><p>जास्त वापरासाठी</p><ul><li>AI Studio access (पुढील इंटिग्रेशननंतर)</li><li>Premium credits</li><li>Priority support</li></ul><a href="#contact" class="plan-btn">Select Premium</a></article>
+    </div>
+    <p class="notice">पेमेंट सध्या सुरू नाही. ग्राहकांकडून पैसे घेण्यापूर्वी Razorpay/इतर payment gateway, backend, subscription validation आणि terms जोडणे आवश्यक आहे.</p>
+  </section>
+
+  <section id="about" class="about"><div class="eyebrow">BUILT FOR YOUR IDEAS</div><h2>एकाच ठिकाणी तुमची क्रिएटिव्ह दुनिया.</h2><p>CreateAI Pro — Imagine • Create • Generate</p></section>
+  <section id="contact" class="contact"><h2>लवकरच सुरू होत आहे</h2><p>सबस्क्रिप्शन किंवा मदतीसाठी तुमचा संपर्क तपशील येथे जोडा.</p><a href="mailto:hello@example.com">Contact Us</a></section>
+</main>
+<footer>© <span id="year"></span> CreateAI Pro. All rights reserved. <span>Made for creators ✦</span></footer>
+<script src="assets/app.js"></script>
+</body></html>
