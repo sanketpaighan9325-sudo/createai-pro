@@ -1,11 +1,7 @@
 export async function onRequestPost({ request, env }) {
   try {
     const body = await request.json();
-
-    const prompt =
-      typeof body.prompt === "string"
-        ? body.prompt.trim()
-        : "";
+    const prompt = body.prompt?.trim();
 
     if (!prompt) {
       return Response.json(
@@ -14,7 +10,7 @@ export async function onRequestPost({ request, env }) {
       );
     }
 
-    if (prompt.length > 1500) {
+    if (prompt.length > 2048) {
       return Response.json(
         { error: "Prompt is too long." },
         { status: 400 }
@@ -24,20 +20,17 @@ export async function onRequestPost({ request, env }) {
     const result = await env.AI.run(
       "@cf/black-forest-labs/flux-1-schnell",
       {
-        prompt: prompt,
+        prompt,
         steps: 4
       }
     );
 
     return Response.json({
-      image: result.image
+      image: `data:image/jpeg;base64,${result.image}`
     });
-
   } catch (error) {
     return Response.json(
-      {
-        error: "Image generation failed. Please try again."
-      },
+      { error: "Image generation failed. Please try again." },
       { status: 500 }
     );
   }
