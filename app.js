@@ -1,27 +1,15 @@
-function demo(inputId, resultId) {
-  const value = document.getElementById(inputId).value.trim();
-  const box = document.getElementById(resultId);
-
-  if (!value) {
-    box.textContent = "कृपया आधी तुमचा प्रॉम्प्ट लिहा.";
-    return;
-  }
-
-  box.textContent =
-    "हा डेमो इंटरफेस आहे. प्रत्यक्ष जनरेशन सुरू करण्यासाठी AI API आणि सुरक्षित backend जोडणे आवश्यक आहे.";
-}
-
 async function generateImage() {
-  const input = document.getElementById("imagePrompt");
-  const box = document.getElementById("imageResult");
-  const prompt = input.value.trim();
+  const promptInput = document.getElementById("imagePrompt");
+  const resultBox = document.getElementById("imageResult");
+
+  const prompt = promptInput.value.trim();
 
   if (!prompt) {
-    box.textContent = "कृपया आधी तुमचा इमेज प्रॉम्प्ट लिहा.";
+    resultBox.textContent = "कृपया आधी Image Prompt लिहा.";
     return;
   }
 
-  box.textContent = "AI तुमची इमेज तयार करत आहे... कृपया थांबा.";
+  resultBox.textContent = "AI तुमची Image तयार करत आहे...";
 
   try {
     const response = await fetch("/api/generate", {
@@ -29,32 +17,52 @@ async function generateImage() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({
+        prompt: prompt
+      })
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error || "इमेज तयार झाली नाही.");
+      throw new Error(
+        data.error || "Image तयार होऊ शकली नाही."
+      );
     }
 
     if (!data.image) {
-      throw new Error("इमेज मिळाली नाही.");
+      throw new Error("Image मिळाली नाही. पुन्हा प्रयत्न करा.");
     }
 
-    box.replaceChildren();
+    resultBox.innerHTML = "";
 
     const image = document.createElement("img");
     image.src = data.image;
     image.alt = "AI Generated Image";
-    image.style.maxWidth = "100%";
+    image.style.width = "100%";
+    image.style.maxWidth = "700px";
     image.style.borderRadius = "12px";
+    image.style.display = "block";
 
-    box.appendChild(image);
+    resultBox.appendChild(image);
+
+    const downloadButton = document.createElement("a");
+    downloadButton.href = data.image;
+    downloadButton.download = "CreateAI-Pro-Image.jpg";
+    downloadButton.textContent = "Download Image";
+    downloadButton.style.display = "inline-block";
+    downloadButton.style.marginTop = "15px";
+    downloadButton.style.padding = "12px 20px";
+    downloadButton.style.background = "#7c3aed";
+    downloadButton.style.color = "#ffffff";
+    downloadButton.style.borderRadius = "8px";
+    downloadButton.style.textDecoration = "none";
+
+    resultBox.appendChild(downloadButton);
 
   } catch (error) {
-    box.textContent =
-      error.message || "काहीतरी चूक झाली. पुन्हा प्रयत्न करा.";
+    resultBox.textContent =
+      "Error: " + error.message;
   }
 }
 
